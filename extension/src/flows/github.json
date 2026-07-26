@@ -1,0 +1,72 @@
+[
+  {
+    "id": "pr_summarise",
+    "label": "Summarise this PR in plain English",
+    "context": "pull_request",
+    "description": "Explain what this pull request does and why, without jargon.",
+    "promptTemplate": "You are a senior engineer using Kimi 3. Summarise the following pull request in plain English for a busy reviewer.\n\nRespond in Markdown with:\n1. One-sentence summary\n2. What changed (bullet points)\n3. Why it likely matters / potential impact\n\nPull Request: {{title}}\n\nDiff:\n{{diff}}",
+    "model": "kimi-3",
+    "maxTokens": 1536,
+    "temperature": 0.3
+  },
+  {
+    "id": "pr_full_review",
+    "label": "Full code review (bugs, tests, security)",
+    "context": "pull_request",
+    "description": "Ask Kimi 3 to review this PR for bugs, missing tests, and security edge cases.",
+    "promptTemplate": "You are an expert code reviewer using Kimi 3. Given this pull request diff, review it for bugs, edge cases, missing tests, and security issues.\n\nRespond in Markdown with sections:\n1. High-risk issues\n2. Suggested tests\n3. Refactoring suggestions\n\nPull Request: {{title}}\n\nPull Request Diff:\n{{diff}}",
+    "model": "kimi-3",
+    "maxTokens": 2048,
+    "temperature": 0.3
+  },
+  {
+    "id": "pr_suggest_tests",
+    "label": "Suggest additional test cases",
+    "context": "pull_request",
+    "description": "Propose extra unit and edge-case tests for the changes in this PR.",
+    "promptTemplate": "You are a test engineer using Kimi 3. Based on the following pull request diff, suggest additional test cases that are currently missing.\n\nRespond in Markdown. For each test give: a title, the scenario, and the expected result. Prioritise edge cases and error paths.\n\nPull Request: {{title}}\n\nDiff:\n{{diff}}",
+    "model": "kimi-3",
+    "maxTokens": 1536,
+    "temperature": 0.4
+  },
+  {
+    "id": "file_explain",
+    "label": "Explain this file to a junior dev",
+    "context": "file",
+    "description": "Walk through what this file does in approachable language.",
+    "promptTemplate": "You are a patient mentor using Kimi 3. Explain the following source file to a junior developer.\n\nRespond in Markdown with:\n1. Purpose of the file (2-3 sentences)\n2. Key parts, walked through in order\n3. Anything tricky or non-obvious to watch out for\n\nFile: {{title}}\n\nContents:\n{{file_contents}}",
+    "model": "kimi-3",
+    "maxTokens": 2048,
+    "temperature": 0.3
+  },
+  {
+    "id": "file_refactor",
+    "label": "Suggest refactors and cleanup",
+    "context": "file",
+    "description": "Propose concrete refactors to improve readability and maintainability.",
+    "promptTemplate": "You are a staff engineer using Kimi 3. Review the following file and suggest refactors and cleanup.\n\nRespond in Markdown with:\n1. Quick wins (low risk)\n2. Structural refactors (with before/after where useful)\n3. Naming / readability notes\n\nOnly suggest changes that preserve behaviour unless you flag them clearly.\n\nFile: {{title}}\n\nContents:\n{{file_contents}}",
+    "model": "kimi-3",
+    "maxTokens": 2048,
+    "temperature": 0.3
+  },
+  {
+    "id": "issue_implementation_steps",
+    "label": "Outline implementation steps",
+    "context": "issue",
+    "description": "Turn this issue into a concrete, ordered implementation plan.",
+    "promptTemplate": "You are a tech lead using Kimi 3. Turn the following GitHub issue into a concrete implementation plan.\n\nRespond in Markdown with:\n1. Restated goal (1 sentence)\n2. Ordered steps\n3. Files/areas likely to change\n4. Risks and open questions\n\nIssue: {{title}}\n\nDescription:\n{{issue_body}}",
+    "model": "kimi-3",
+    "maxTokens": 1536,
+    "temperature": 0.3
+  },
+  {
+    "id": "issue_clarifying_questions",
+    "label": "Draft clarifying questions as a comment",
+    "context": "issue",
+    "description": "Draft a comment asking the questions needed before starting work.",
+    "promptTemplate": "You are an engineer using Kimi 3, about to pick up the following issue. Draft a short, friendly GitHub comment asking the clarifying questions you need answered before starting.\n\nRespond with only the comment body in Markdown. Keep it concise and use a numbered list of questions.\n\nIssue: {{title}}\n\nDescription:\n{{issue_body}}",
+    "model": "kimi-3",
+    "maxTokens": 1024,
+    "temperature": 0.5
+  }
+]

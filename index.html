@@ -93,6 +93,9 @@
   .lede{color:var(--dim);font-size:18px;max-width:30em;margin:20px 0 28px}
   .hero-cta{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
   .shortcut-note{color:var(--dim);font-size:13.5px;margin-top:18px;display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+  .byo-note{margin-top:12px;font-size:13px;line-height:1.5;color:var(--text);background:rgba(34,211,238,.08);border:1px solid rgba(34,211,238,.22);border-radius:10px;padding:10px 13px;max-width:34em}
+  .byo-note a{color:var(--cyan);text-decoration:none}
+  .byo-note a:hover{text-decoration:underline}
 
   /* ---- hero mock (the signature element) ---- */
   .stage{position:relative;height:420px;border-radius:16px;overflow:hidden;
@@ -194,6 +197,8 @@
   .card{border:1px solid var(--border);border-radius:14px;background:var(--panel);padding:24px}
   .card h3{margin:0 0 6px;font-size:18px;display:flex;align-items:center;gap:9px}
   .card p{color:var(--dim);font-size:14px;margin:0 0 16px}
+  .card p strong{color:var(--text)}
+  .card p code{font-family:var(--mono);font-size:12px;background:var(--panel2);border:1px solid var(--border);border-radius:5px;padding:1px 5px;color:#cdd6e2}
   pre{margin:0;background:var(--ink);border:1px solid var(--border);border-radius:10px;
     padding:14px 16px;overflow-x:auto;font-family:var(--mono);font-size:12.5px;color:#cdd6e2;line-height:1.7}
   pre .c{color:var(--dim)}
@@ -245,6 +250,7 @@
       <a class="btn" href="https://github.com/wushu75/Kimi3Flow" target="_blank" rel="noopener">★ View source</a>
     </div>
     <div class="shortcut-note">Press <kbd>Ctrl</kbd> / <kbd>⌘</kbd> <kbd>Shift</kbd> <kbd>K</kbd> on any PR, file, or issue.</div>
+    <div class="byo-note">🔑 Requires your own Kimi (Moonshot) API key — <a href="https://platform.moonshot.ai" target="_blank" rel="noopener">free to create</a>. Your key stays in your browser; your requests bill your account.</div>
   </div>
 
   <!-- signature: the command palette, live, over a GitHub diff -->
@@ -383,7 +389,7 @@
     <div class="install">
       <div class="card">
         <h3>From the Chrome Web Store</h3>
-        <p>One click. Then open the options page and paste your Kimi 3 API base URL, key, and model.</p>
+        <p>One click to install. Then open the options page and paste <strong>your own</strong> Kimi API key (base URL <code>https://api.moonshot.ai/v1</code>, model <code>kimi-k3</code>).</p>
         <a class="btn btn-primary" href="https://chromewebstore.google.com/detail/kimi3flow/PLACEHOLDER" target="_blank" rel="noopener">Add to Chrome</a>
         <p style="margin-top:14px;font-size:12.5px">Also works in Microsoft Edge.</p>
       </div>

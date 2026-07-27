@@ -14,6 +14,13 @@ Press <kbd>Ctrl/⌘ + Shift + K</kbd> on any GitHub **pull request**, **file**, 
 **issue** page to open a command palette, pick a flow, and stream the result
 into a side panel — then copy it as Markdown or drop it straight into a comment.
 
+> **🔑 Requires your own Kimi (Moonshot) API key.** Kimi3Flow ships with no
+> account or built-in key — you add your own once on the options page. Creating a
+> key is free at [platform.moonshot.ai](https://platform.moonshot.ai) (a small
+> prepaid balance is needed before it will run). Your key is stored only in your
+> browser and is sent only to the endpoint you configure. Your requests bill
+> **your** account, not anyone else's.
+
 ---
 
 ## Features
@@ -74,18 +81,21 @@ Then load it:
 
 Run `npm run dev` for a rebuild-on-save watch mode.
 
-## Set your Kimi 3 API key
+## Set your Kimi (Moonshot) API key
 
-1. Right-click the Kimi3Flow toolbar icon → **Options** (or open the extension's
-   details → **Extension options**).
+First, create a key: sign in at [platform.moonshot.ai](https://platform.moonshot.ai)
+→ **API Keys** → **Create API Key**, and add a small prepaid balance (the key
+won't run on a zero balance). Then, in the extension:
+
+1. Right-click the Kimi3Flow toolbar icon → **Options** (on first install this
+   opens automatically).
 2. Fill in:
-   - **API base URL** — your OpenAI-compatible Kimi 3 endpoint, e.g.
-     `https://api.moonshot.ai/v1`. The extension calls `{base}/chat/completions`.
-   - **API key** — your Kimi 3 key.
-   - **Default model** — e.g. `kimi-3`.
+   - **API base URL** — `https://api.moonshot.ai/v1`. The extension calls `{base}/chat/completions`.
+   - **API key** — the key you created.
+   - **Default model** — `kimi-k3` (or a cheaper option like `kimi-k2.6` / `kimi-k2.5`).
 3. Click **Save**. You'll be asked to grant access to the API host so requests
    aren't blocked by the browser — accept it.
-4. Optionally click **Test connection** to confirm everything works.
+4. Click **Test connection** to confirm the key and URL work.
 
 ## How it works
 

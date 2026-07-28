@@ -1,123 +1,129 @@
-<p align="center">
-  <img src="assets/icon1024.png" width="96" alt="Kimi3Flow icon" />
-</p>
+# TranscriptSnap
 
-<h1 align="center">Kimi3Flow</h1>
+**A free, local-only YouTube transcript cleaner for Chrome.** Pull the transcript from the video you're watching, strip the timestamps and caption clutter, and copy or download clean text.
 
-<p align="center"><strong>Use Kimi 3 on any website in one shortcut.</strong></p>
+No backend. No account. No network requests — not one.
 
-Kimi3Flow is a free, open-source browser extension (Chrome / Edge) that brings
-**Kimi 3 to GitHub** with a single keyboard shortcut. Summarise, review, and
-refactor code without leaving your tab.
+[![Chrome Web Store](https://img.shields.io/chrome-web-store/v/pehnikkgaikdmpdmodoemfcifboopbil?label=chrome%20web%20store&color=0e7c6b)](https://chromewebstore.google.com/detail/transcriptsnap/pehnikkgaikdmpdmodoemfcifboopbil)
+[![Users](https://img.shields.io/chrome-web-store/users/pehnikkgaikdmpdmodoemfcifboopbil?color=0e7c6b)](https://chromewebstore.google.com/detail/transcriptsnap/pehnikkgaikdmpdmodoemfcifboopbil)
+[![Rate it](https://img.shields.io/badge/rate%20it-%E2%98%85%E2%98%85%E2%98%85%E2%98%85%E2%98%85-0e7c6b)](https://chromewebstore.google.com/detail/transcriptsnap/pehnikkgaikdmpdmodoemfcifboopbil/reviews)
+[![License: MIT](https://img.shields.io/badge/license-MIT-blue)](LICENSE)
 
-Press <kbd>Ctrl/⌘ + Shift + K</kbd> on any GitHub **pull request**, **file**, or
-**issue** page to open a command palette, pick a flow, and stream the result
-into a side panel — then copy it as Markdown or drop it straight into a comment.
+⬇️ **[Install from the Chrome Web Store](https://chromewebstore.google.com/detail/transcriptsnap/pehnikkgaikdmpdmodoemfcifboopbil)**
 
-> **🔑 Requires your own Kimi (Moonshot) API key.** Kimi3Flow ships with no
-> account or built-in key — you add your own once on the options page. Creating a
-> key is free at [platform.moonshot.ai](https://platform.moonshot.ai) (a small
-> prepaid balance is needed before it will run). Your key is stored only in your
-> browser and is sent only to the endpoint you configure. Your requests bill
-> **your** account, not anyone else's.
+🔗 **[Website](https://wushu75.github.io/TranscriptSnap/)** · **[Privacy policy](https://wushu75.github.io/TranscriptSnap/privacy.html)** · **[Report a bug](https://github.com/wushu75/TranscriptSnap/issues/new/choose)**
 
 ---
 
-## Features
+## See it work
 
-- **Command palette** — dark, minimal, centred, with fuzzy search.
-- **Context-aware flows** — different commands for PRs, files, and issues.
-- **Streaming results** in a slide-in side panel.
-- **Copy as Markdown**, **Copy as GitHub comment**, or **Insert into comment box**.
-- **JSON-driven flows** — add or edit prompts in `extension/src/flows/github.json`.
-- **Bring your own key** — your Kimi 3 API key is stored locally in your browser and never leaves it except to call your configured endpoint.
+The panel floats over the video you're watching. Click once, and the caption mess becomes clean text.
 
-## Flows included (v0)
+![Before and after: the floating panel in its Ready state beside the cleaned transcript](docs/screenshots/workflow.png)
 
-| Context | Command |
+| Click the panel | Get clean text |
+| :---: | :---: |
+| ![TranscriptSnap panel over a YouTube feed, ready to transcribe](docs/screenshots/step1-ready.png) | ![Cleaned transcript shown as paragraphs with copy and download buttons](docs/screenshots/step2-transcribed.png) |
+
+---
+
+## What it does
+
+YouTube's built-in transcript is a wall of two-second fragments, repeated lines, `[Music]` cues and timestamps. TranscriptSnap turns that into prose:
+
+| Before | After |
 | --- | --- |
-| Pull request | Summarise this PR in plain English |
-| Pull request | Full code review (bugs, tests, security) |
-| Pull request | Suggest additional test cases |
-| File | Explain this file to a junior dev |
-| File | Suggest refactors and cleanup |
-| Issue | Outline implementation steps |
-| Issue | Draft clarifying questions as a comment |
+| `0:12  so the first thing you want to do is`<br>`0:14  [Music]`<br>`0:15  so the first thing you want to do is`<br>`0:17  open up the settings panel and then` | So the first thing you want to do is open up the settings panel and then scroll down to where it says export. |
 
-## Usage
+- **One click** on any `youtube.com/watch` page
+- **Copy transcript** or **Download .txt**
+- **Timestamps toggle** — off for reading, on for citing
+- **Status chip** that tells you where you are: Ready → Transcribing → Transcribed → Copied, or a plain-English error
 
-![Kimi3Flow demo](docs/demo.gif)
+## Privacy
 
-> Replace `docs/demo.gif` with a real screen recording — see
-> [`docs/screenshots.md`](docs/screenshots.md) for how to capture one.
+The extension reads the transcript YouTube **already renders in the page DOM**. That's the whole mechanism — which is why it needs no API key, no server and no connection. Open DevTools → Network while you use it; you'll see nothing.
 
-1. Open a GitHub PR, file, or issue.
-2. Press <kbd>Ctrl/⌘ + Shift + K</kbd> (or click the toolbar icon).
-3. Type to filter, then <kbd>↵</kbd> to run a flow.
-4. Watch the response stream in, then copy or insert it.
-
----
+The only thing written to storage is one boolean: whether timestamps are shown.
 
 ## Install
 
-### From the Chrome Web Store
+### From the Chrome Web Store (recommended)
 
-> _Coming soon — listing link placeholder:_ **https://chromewebstore.google.com/detail/kimi3flow/PLACEHOLDER**
+**[Add TranscriptSnap to Chrome](https://chromewebstore.google.com/detail/transcriptsnap/pehnikkgaikdmpdmodoemfcifboopbil)** — one click, updates automatically.
 
-### From source (developer mode)
+### From a release
+
+1. Download `TranscriptSnap.zip` from the [latest release](https://github.com/wushu75/TranscriptSnap/releases/latest) and unzip it.
+2. Go to `chrome://extensions`.
+3. Turn on **Developer mode** (top right).
+4. Click **Load unpacked** and select the unzipped folder.
+5. Open any YouTube video with captions.
+
+### From source
 
 ```bash
-git clone https://github.com/YOUR_ORG/kimi3flow.git
-cd kimi3flow
-npm install
-npm run build      # outputs the loadable extension to extension/dist/
+git clone https://github.com/wushu75/TranscriptSnap.git
 ```
 
-Then load it:
+Then load the `extension/` folder via **Load unpacked**, as above.
 
-1. Open `chrome://extensions` (or `edge://extensions`).
-2. Toggle **Developer mode** on.
-3. Click **Load unpacked** and select the `extension/dist` folder.
+Works in Chrome, Edge, Brave, Opera and any Chromium browser with Manifest V3 support (Chrome 88+).
 
-Run `npm run dev` for a rebuild-on-save watch mode.
-
-## Set your Kimi (Moonshot) API key
-
-First, create a key: sign in at [platform.moonshot.ai](https://platform.moonshot.ai)
-→ **API Keys** → **Create API Key**, and add a small prepaid balance (the key
-won't run on a zero balance). Then, in the extension:
-
-1. Right-click the Kimi3Flow toolbar icon → **Options** (on first install this
-   opens automatically).
-2. Fill in:
-   - **API base URL** — `https://api.moonshot.ai/v1`. The extension calls `{base}/chat/completions`.
-   - **API key** — the key you created.
-   - **Default model** — `kimi-k3` (or a cheaper option like `kimi-k2.6` / `kimi-k2.5`).
-3. Click **Save**. You'll be asked to grant access to the API host so requests
-   aren't blocked by the browser — accept it.
-4. Click **Test connection** to confirm the key and URL work.
-
-## How it works
+## Repository layout
 
 ```
-GitHub tab
-  └─ content script  ── detects PR / file / issue, extracts diff / file / body
-       ├─ command palette + result panel  (React, isolated in a shadow DOM)
-       └─ opens a Port to the service worker
-             └─ service worker  ── holds your key, calls {base}/chat/completions
-                                    with stream:true and relays tokens back
+extension/          The extension itself — this is what you load unpacked
+  manifest.json     Manifest V3
+  content.js        Extraction, cleaning, panel UI, state machine
+  background.js     Service worker (toolbar badge only)
+  popup.html/.js    Toolbar popup
+  style.css         Shared styles for panel and popup
+  icons/            16, 32, 48, 128 px
+docs/               The website, served by GitHub Pages
+.github/            Issue templates
+TESTING.md          Manual test plan
+store/              Store assets, promo tiles and the submission guide
+test/               jsdom tests for extraction and cleaning
 ```
 
-Prompts live in [`extension/src/flows/github.json`](extension/src/flows/github.json)
-and are matched to the page context. `{{diff}}`, `{{file_contents}}`,
-`{{issue_body}}`, and `{{title}}` placeholders are filled from the page.
+## Building the store zip
+
+The zip must have `manifest.json` at its root, so zip the *contents* of `extension/`, not the folder:
+
+```bash
+cd extension && zip -r ../TranscriptSnap.zip . -x ".*" && cd ..
+```
+
+## Publishing
+
+Store assets, listing copy and a step-by-step submission guide live in
+**[store/SUBMISSION.md](store/SUBMISSION.md)**.
+
+## Testing
+
+```bash
+npm install jsdom && node test/extraction.test.js
+```
+
+See **[TESTING.md](TESTING.md)** for the manual test plan — happy path, no-captions path, SPA navigation, dark mode and accessibility checks.
+
+## Known limits
+
+- Videos with captions disabled by the uploader have no transcript to extract. The extension says so rather than failing silently.
+- Live streams only expose a transcript once captions are finalised.
+- TranscriptSnap depends on YouTube's DOM structure. If YouTube changes its transcript markup, extraction can break — [open an issue](https://github.com/wushu75/TranscriptSnap/issues/new/choose) and it gets patched.
+- Multi-language videos use whichever caption track YouTube has selected.
 
 ## Contributing
 
-Contributions welcome — this project is intentionally small and easy to extend.
-The most common change is **adding a flow**: append an entry to `github.json`
-(see [`docs/github-flows.md`](docs/github-flows.md)). No build changes needed.
+Bug reports and small, focused pull requests are welcome. Two rules that won't bend:
 
-## License
+1. **No network calls.** Not for fonts, not for analytics, not for "just one API".
+2. **No new permissions** without a strong justification in the PR description.
 
-[MIT](LICENSE)
+## Licence
+
+MIT — see [LICENSE](LICENSE).
+
+Not affiliated with, endorsed by or sponsored by YouTube or Google.

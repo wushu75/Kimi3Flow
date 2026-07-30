@@ -62,7 +62,7 @@ into a side panel — then copy it as Markdown or drop it straight into a commen
 
 ### From the Chrome Web Store
 
-> _Coming soon — listing link placeholder:_ **https://chromewebstore.google.com/detail/kimi3flow/PLACEHOLDER**
+**https://chromewebstore.google.com/detail/kimi3flow/jkckbjlkofiopobhlpioddgakdldbkle?authuser=0&hl=en-GB**
 
 ### From source (developer mode)
 
